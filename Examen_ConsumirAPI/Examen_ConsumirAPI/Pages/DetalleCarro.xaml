@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Examen_ConsumirAPI.Pages.DetalleCarro">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="DataLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="TextColor" Value="#333333" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+            <Style x:Key="DataValueLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="TextColor" Value="#666666" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <Label Text="Carro Details" FontSize="Title" HorizontalOptions="Center"  FontAttributes="Bold"/>
+
+            <Grid ColumnSpacing="10" RowSpacing="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Text="MARCA:" Style="{StaticResource DataLabelStyle}" />
+                <Entry Grid.Row="0" Grid.Column="1" Text="" x:Name="txtmarca" Style="{StaticResource DataValueLabelStyle}" />
+
+                <Label Grid.Row="1" Grid.Column="0" Text="MODELO:" Style="{StaticResource DataLabelStyle}" />
+                <Entry Grid.Row="1" Grid.Column="1" Text="" x:Name="txtmodelo" Style="{StaticResource DataValueLabelStyle}" />
+
+                <Label Grid.Row="2" Grid.Column="0" Text="COLOR:" Style="{StaticResource DataLabelStyle}" />
+                <Entry Grid.Row="2" Grid.Column="1" Text="" x:Name="txtcolor" Style="{StaticResource DataValueLabelStyle}" />
+
+                <Label Grid.Row="3" Grid.Column="0" Text="PLACA:" Style="{StaticResource DataLabelStyle}" />
+                <Entry Grid.Row="3" Grid.Column="1" Text="" x:Name="txtplaca" Style="{StaticResource DataValueLabelStyle}" IsEnabled="{Binding IsPlacaEnabled}"/>
+
+                <Label Grid.Row="4" Grid.Column="0" Text="AÑO:" Style="{StaticResource DataLabelStyle}" />
+                <Entry Grid.Row="4" Grid.Column="1" Text="" x:Name="txtano" Style="{StaticResource DataValueLabelStyle}" />
+
+                <Label Grid.Row="5" Grid.Column="0" Text="PRECIO:" Style="{StaticResource DataLabelStyle}" />
+                <Entry Grid.Row="5" Grid.Column="1" Text="" x:Name="txtprecio" Style="{StaticResource DataValueLabelStyle}" />
+
+                <Label Grid.Row="6" Grid.Column="0" Text="RUTA IMAGEN:" Style="{StaticResource DataLabelStyle}" />
+                <Entry Grid.Row="6" Grid.Column="1" Text="" x:Name="txtrutaimagen" Style="{StaticResource DataValueLabelStyle}"  IsVisible="false"/>
+                <Button Grid.Row="6" Grid.Column="1" Text="Seleccionar imagen" Clicked="OnSelectImageClicked" />
+
+                <Label Grid.Row="7" Grid.Column="0" Text="IMAGEN ACTUAL:" Style="{StaticResource DataLabelStyle}" />
+                <Image Grid.Row="7" Grid.Column="1" x:Name="image" IsVisible="{Binding IsImageVisible}"/>
+                
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                
+                
+                <Button Grid.Column="1" Text="ADD" FontAttributes="Bold" HorizontalOptions="Center" Clicked="OnAgregarClicked" BackgroundColor="DarkSeaGreen" IsVisible="{Binding IsAddButtonVisible}" />
+                <Button Grid.Column="2" Text="UPDATE" FontAttributes="Bold" HorizontalOptions="Center" Clicked="OnActualizarClicked" BackgroundColor="DarkOrange" IsVisible="{Binding IsUpdateButtonVisible}" />
+                <Button Grid.Column="3" Text="DELETE" FontAttributes="Bold" HorizontalOptions="Center" Clicked="OnEliminarClicked" BackgroundColor="DarkRed" IsVisible="{Binding IsDeleteButtonVisible}" />
+                
+            </Grid>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
